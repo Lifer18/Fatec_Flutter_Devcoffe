@@ -57,7 +57,8 @@ void main(List<String> arguments) {
   //_playgroundNullSafety();
   //_playgroundListas();
   //_playgroundMapas();
-  _playgroundSets();
+  //_playgroundSets();
+  _desafiolotr();
 }
 
 //TODO: Sound Null Safety com variáveis locais
@@ -190,7 +191,7 @@ _playgroundMapas() {
       2025, ((value) => 'Dart Bane: Uma História Star Wars'));
 
   print('\nFilmes atuais com base nas keys e values.');
-  // Exibir as chaves e vbalores de um mapa
+  // Exibir as chaves e valores de um mapa
   filmesAtuaisStarWarsMap.forEach((key, value) {
     print('$key: $value');
   });
@@ -272,8 +273,49 @@ _playgroundSets() {
     10. Liste o Map completo.
 */
 
-_desafiolotr(){
+_desafiolotr() {
+  Map<int, dynamic> senhorDosAneis = {
+    2001: "O Senhor dos Anéis: A Sociedade do Anel",
+    2002: "O Senhor dos Anéis: As Duas Torres",
+    2003: "O Senhor dos Anéis: O Retorno do Rei",
+    2012: "O Hobbit: Uma Jornada Inesperada",
+    2013: "O Hobbit: A Desolação de Smaug",
+    2014: "O Hobbit: A Batalha dos Cinco Exércitos"
+  };
 
+  senhorDosAneis.keys.forEach(print);
+
+  senhorDosAneis.values.forEach(print);
+
+  senhorDosAneis.entries.forEach((e) {
+    print("Titulo: ${e.value} , Ano: ${e.key}");
+  });
+
+  var senhorDosAneisPrequels = senhorDosAneis.entries
+      .where((e) => e.key >= 2012)
+      .map((e) => e.value)
+      .toList();
+
+  var senhorDosAneisOriginais = senhorDosAneis.entries
+      .where((e) => e.key < 2012)
+      .map((e) => e.value)
+      .toList();
+
+  senhorDosAneisPrequels.forEach(print);
+
+  senhorDosAneisOriginais.forEach(print);
+
+  senhorDosAneis.putIfAbsent(2022, () => "Anéis de Poder");
+
+  senhorDosAneis.entries.forEach((e) {
+    print("Titulo: ${e.value} , Ano: ${e.key}");
+  });
+
+  senhorDosAneis.remove(2022);
+
+  senhorDosAneis.entries.forEach((e) {
+  print("Titulo: ${e.value} , Ano: ${e.key}");
+  });
 }
 
 class Pessoa {
